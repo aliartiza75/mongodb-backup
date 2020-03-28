@@ -14,6 +14,10 @@ There are two ways to use these scripts:
 
 ## 1. Bare-metal Server
 
+In this scenario following things are being assumed:
 
+1. InfluxDB is deployed on a server. As we need only its address.
 
+2. Telegraf is running on the server where the backup and restore strip will execute.
 
+3. 
