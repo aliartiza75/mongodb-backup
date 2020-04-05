@@ -18,6 +18,12 @@ In this scenario following things are being assumed:
 
 1. InfluxDB is deployed on a server. As we need only its address.
 
-2. Telegraf is running on the server where the backup and restore strip will execute. It requires to read the 
+2. Telegraf is running on the server where the backup and restore strip will execute. It requires to read the files containing the status of the backup and restore process.
 
-3. 
+
+### Configuration
+
+1. Run the Influxdb service, I am running it as a docker container:
+
+```bash
+```
