@@ -76,7 +76,7 @@ sudo service telegraf status
     * mongodb retore
 
 
-7. Verify telegraf is configured correctly, by checking the influxdb databases.
+7. Verify telegraf is configured correctly, by checking the influxdb databases and measurements.
 
 ```bash
 show databases
@@ -95,16 +95,82 @@ use telegraff
 show measurements
 ```
 
+![show measurements](./images/show-measurements.png)
+
 ```bash
 select * from mem LIMIT 1
 ```
 
+![get data](./images/get-data-from-measurement.png)
+
+It can be seen that data has been ingested in the measurement.
 
 
-2. Start the mongdb as docker container:
+8. Start the mongdb as docker container:
 ```bash
-docker run -d \
+sudo docker run -d \
     -e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
     -e MONGO_INITDB_ROOT_PASSWORD=secret \
+    -p 27017:27017 \
     mongo
 ```
+
+9. Check mongodb is running:
+
+```bash
+# to start the bash shell inside the docker container
+sudo docker exec -it <container-id> /bin/bash 
+
+# to use mongo shell. Provide username and password otherwise you will not be able to use the shell properly
+mongo --username mongoadmin --password secret
+```
+
+```bash
+to check the existing dbs
+
+> show dbs
+```
+![show dbs](./images/show-dbs.png)
+
+10. Create a new database and insert a document
+```bash
+# to use a database
+use movie-db
+```
+![use movie-db])(./images/use-db.png)
+
+```bash
+# insert a document in movie table
+db.movie.insert({"name":"my movie"})
+```
+![insert document](./images/insert-document.png)
+
+
+```bash
+show dbs
+```
+![show dbs](./images/show-dbs-new-db.png)
+New database movie db has been created.
+
+
+11. Take the backup of the mongo db's current state using the [`backup.sh`](./scripts/backup.sh) script. Logic of backup script is throughly explained in the file.
+
+```bash
+# make the file executable
+
+chmod +x backup.sh
+```
+
+```bash
+# run the script
+sudo ./backup.sh
+```
+![backup script output](./images/backup-script-logs.png)
+
+An encrypted file has been created in `/mnt/mongodb` directory
+
+![encrypted backup](./images/encrypted-backup.png)
+
+A log is created at `/var/log/mongo-backup.stat` containing the following logs:
+
+![logs file](./images/logs-file.png)

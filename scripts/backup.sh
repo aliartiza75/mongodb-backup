@@ -80,7 +80,9 @@ echo "${DATE_TIME} 1" >> $BACKUP_STATUS
 # NOTE: Not forwarding the mongodump command strerr output in a file because it output debug logs in stderr. 
 #       It is a bug therefore using exitcode
 # NOTE 2: Here cannot backup a specific database beacuase according to docmumentation --db and --uri cannot be use together.
-nice -n 10 /usr/bin/mongodump --uri mongodb://${USER}:${PASSWORD}@${HOSTS} --oplog --out=$BACKUP_FILE_PATH
+
+# nice -n 10 /usr/bin/mongodump --uri mongodb://${USER}:${PASSWORD}@${HOSTS} --oplog --out=$BACKUP_FILE_PATH
+nice -n 10 /usr/bin/mongodump --uri mongodb://${USER}:${PASSWORD}@${HOSTS} --out=$BACKUP_FILE_PATH
 mongo_dump_check
 check_error_status
 
@@ -113,7 +115,7 @@ mv $ENCRYPTED_FILE $BACKUP_DIR 2> $COMMAND_STATUS_FILE
 check_error_status
 
 
-# It will remove the files that are 7 days old
+# It will remove the files that are 1 day old
 # ARGS DETAILS
 # -mtime File's data was last modified n*24 hours ago.  See the comments for -atime to understand how rounding affects the interpretation of file modification times.
 find $BACKUP_DIR  -mtime +1 -delete 2> $COMMAND_STATUS_FILE
