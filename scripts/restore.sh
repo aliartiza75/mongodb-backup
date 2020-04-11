@@ -26,14 +26,14 @@ COMMAND_STATUS_FILE="command.stat"
 rm -rf $COMMAND_STATUS_FILE
 touch $COMMAND_STATUS_FILE
 
-ENCRYPTED_BACKUP_FILE="mongo-19-03-2020-1584621092.tar.gz.enc"
+ENCRYPTED_BACKUP_FILE="mongo-11-04-2020-1586627238.tar.gz.enc"
 UNENCRYPTED_COMPRESSED_FILE="/tmp/"${ENCRYPTED_BACKUP_FILE:0:(${#ENCRYPTED_BACKUP_FILE} - 4)}
 UNCOMPRESSED_FOLDER=${UNENCRYPTED_COMPRESSED_FILE:0:(${#UNENCRYPTED_COMPRESSED_FILE} - 7)}
 DECRYPTION_PASSPHRASE=ew1quohDie0goh
 
 # NOTE: Add the name of the database that need to be restored. Here .* means all the collections of this database. Other regex
 #       can also be used 
-declare -a DATABASES_NAME=("db1.*" "db2.*")
+declare -a DATABASES_NAME=("movie*" "db2*")
 
 
 

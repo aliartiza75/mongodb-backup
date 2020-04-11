@@ -86,7 +86,7 @@ nice -n 10 /usr/bin/mongodump --uri mongodb://${USER}:${PASSWORD}@${HOSTS} --out
 mongo_dump_check
 check_error_status
 
-# compressing the backup data
+# compressing the backup dataencrypted-backup.png
 nice -n 10 tar -czvf $COMPRESSED_FILE --directory="/tmp" $BACKUP_FILE 2> $COMMAND_STATUS_FILE
 check_error_status
 
