@@ -1,16 +1,20 @@
 # mongodb-backup
 
-
 ## Overview
 
-This repository contains scripts for mongodb backup and restore process. It stores the backup and restore process progess in a file, this is ingested in influxdb using telegraf. Openssl is used for backup file encryption.
+This repository contains scripts for mongodb backup and restore process. It stores the backup and restore process progess in a file, telegraf reads this file and ingest the data in the influxdb. Openssl is used for backup file encryption.
 
 There are two ways to use these scripts:
 
 1. On a bare-metal server.
-
 2. In a kubernetes environment.
 
+
+**Tools**
+
+1. [Influxdb](https://www.influxdata.com/).
+2. [Mongodb](https://www.mongodb.com/).
+3. [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/).
 
 ## 1. Bare-metal Server
 
@@ -18,7 +22,7 @@ In this scenario following things are being assumed:
 
 1. InfluxDB is deployed on a server. As we need only its address.
 
-2. Telegraf is running on the server where the backup and restore script for mongodb will execute. Whenever the script(backup or restore) executes, it will writes its status in a file. Telegraf will moniter that file and once change is detected, it will write the change in a measurement of a influxdb database. Details regarding how each of these components work is given in the configuration section.
+2. Telegraf is running on the server where the backup and restore script for mongodb will execute. Whenever the script(backup or restore) executes, it will writes the status in a file. Telegraf will moniter that file and once change is detected, it will write the change in a measurement of a influxdb database. Details regarding how each of these components work is given in the configuration section.
 
 ### Configuration
 
@@ -36,24 +40,20 @@ sudo docker exec -it <container-id> /bin/bash
 influx # to open the influx shell
 
 help # it will print the list of available commands
-
 ```
 
 3. To list databases:
+
 ```bash
 show databases
 ```
-output
-
 ![list databases](./images/list-databases.png)
-
 
 It can be seen that there are no database except `_internal` database.
 
-4. Start the telegraf service, I have installed telegraf on my system. By default it tries to connect with influxdb on `localhost:8086`. As influxdb is already running, it will connect to it directly.
+4. Telegraf uses a file placed at `/etc/telegraf/telegraf.conf`, it contains configuration for its [plugins](https://v2.docs.influxdata.com/v2.0/reference/telegraf-plugins/). By default it has plugins(input and output) configured to get the system metrics where telegraf is running. `telegraf.conf` file contains alot of configurations I have modified this [file](./telegraf/telegraf.conf).
 
-5. Telegraf 
-
+5. Start the telegraf service, I have installed telegraf on my system. By default it tries to connect with influxdb on `localhost:8086`.
 
 2. Start the mongdb as docker container:
 ```bash
