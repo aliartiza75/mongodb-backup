@@ -228,6 +228,14 @@ sudo ./restore.sh
 
 ![restore script logs](./images/restore-script-logs.png)
 
+
+`movie` database has been restore:
+```bash
+show dbs
+```
+![show dbs](./images/show-dbs-new-db.png)
+
+
 3.3. Telegraf will read the `/var/log/mongo-restore.stat` file and dump the data in `restore` measurement of influxdb.
 
 ```bash
