@@ -55,6 +55,27 @@ It can be seen that there are no database except `_internal` database.
 
 5. Start the telegraf service, I have installed telegraf on my system. By default it tries to connect with influxdb on `localhost:8086`.
 
+```bash
+sudo service telegraf start # to start the service.
+sudo service telegraf stop # to stop the service.
+```
+
+To check the status
+```
+sudo service telegraf status
+```
+![telegraf status](./images/telegraf-status.png)
+
+
+6. Once the influxdb is started it will dump the data for following metrics:
+
+    * cpu
+    * system
+    * memory
+    * diskio
+    * mongodb backup
+    * mongodb retore
+
 2. Start the mongdb as docker container:
 ```bash
 docker run -d \
