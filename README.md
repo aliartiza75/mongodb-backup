@@ -227,3 +227,16 @@ sudo ./restore.sh
 ```
 
 ![restore script logs](./images/restore-script-logs.png)
+
+3.3. Telegraf will read the `/var/log/mongo-restore.stat` file and dump the data in `restore` measurement of influxdb.
+
+```bash
+show measurements
+```
+
+![show measurement restore](./images/show-measurement-restore.png)
+
+```bash
+select * from restore
+```
+![show measturement restore data](./images/show-measurement-restore-data.png)
