@@ -51,7 +51,7 @@ show databases
 
 It can be seen that there are no database except `_internal` database.
 
-4. Telegraf uses a file placed at `/etc/telegraf/telegraf.conf`, it contains configuration for its [plugins](https://v2.docs.influxdata.com/v2.0/reference/telegraf-plugins/). By default it has plugins(input and output) configured to get the system metrics where telegraf is running. `telegraf.conf` file contains alot of configurations I have modified this [file](./telegraf/telegraf.conf).
+4. Telegraf uses a file placed at `/etc/telegraf/telegraf.conf`, it contains configuration for its [plugins](https://v2.docs.influxdata.com/v2.0/reference/telegraf-plugins/). By default it has plugins(input and output) configured to get the system metrics where telegraf is running. `telegraf.conf` file contains alot of configurations I have modified this [file](./telegraf/telegraf.conf), just go through this file to get the basic understanding of the configuration, everything is explained.
 
 5. Start the telegraf service, I have installed telegraf on my system. By default it tries to connect with influxdb on `localhost:8086`.
 
@@ -61,11 +61,10 @@ sudo service telegraf stop # to stop the service.
 ```
 
 To check the status
-```
+```bash
 sudo service telegraf status
 ```
 ![telegraf status](./images/telegraf-status.png)
-
 
 6. Once the influxdb is started it will dump the data for following metrics:
 
@@ -75,6 +74,32 @@ sudo service telegraf status
     * diskio
     * mongodb backup
     * mongodb retore
+
+
+7. Verify telegraf is configured correctly, by checking the influxdb databases.
+
+```bash
+show databases
+```
+
+![list databases with db](./images/list-databases-with-db.png)
+
+It can be seen that a new database has been created named as `telegraff` (i have intentionally added and extra `f` in it).
+
+```bash
+use telegraff
+```
+![use telegraf](./images/use-telegraf.png)
+
+```bash
+show measurements
+```
+
+```bash
+select * from mem LIMIT 1
+```
+
+
 
 2. Start the mongdb as docker container:
 ```bash
