@@ -155,8 +155,9 @@ db.movie.insert({"name":"my movie"})
 show dbs
 ```
 ![show dbs](./images/show-dbs-new-db.png)
-New database movie db has been created.
 
+
+New database movie db has been created.
 
 
 #### 2. Backup Mongodb Data
