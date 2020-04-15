@@ -142,7 +142,7 @@ to check the existing dbs
 # to use a database
 use movie
 ```
-![use movie])(./images/use-db.png)
+![use movie](./images/use-db.png)
 
 ```bash
 # insert a document in movie table
@@ -192,9 +192,7 @@ A log is created at `/var/log/mongo-backup.stat` containing the following logs:
 
 Extracting data from the `backup` measurement:
 
-```
 ![backup measurement](./images/backup-measurement-data.png)
-```
 
 #### 3. Restore Mongodb Data
 
