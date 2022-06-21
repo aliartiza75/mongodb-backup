@@ -7,8 +7,6 @@
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=bugs)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=aliartiza75_mongodb-backup-restore&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=aliartiza75_mongodb-backup-restore)
